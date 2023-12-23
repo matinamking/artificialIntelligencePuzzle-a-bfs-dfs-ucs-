@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\تمرینات\\PazelHosheSerch\\Pazel\\Pazel\\Pazel.csproj": {}
+    "D:\\تمرینات\\hosh\\Pazel\\Pazel\\Pazel.csproj": {}
   },
   "projects": {
-    "D:\\تمرینات\\PazelHosheSerch\\Pazel\\Pazel\\Pazel.csproj": {
+    "D:\\تمرینات\\hosh\\Pazel\\Pazel\\Pazel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\تمرینات\\PazelHosheSerch\\Pazel\\Pazel\\Pazel.csproj",
+        "projectUniqueName": "D:\\تمرینات\\hosh\\Pazel\\Pazel\\Pazel.csproj",
         "projectName": "Pazel",
-        "projectPath": "D:\\تمرینات\\PazelHosheSerch\\Pazel\\Pazel\\Pazel.csproj",
+        "projectPath": "D:\\تمرینات\\hosh\\Pazel\\Pazel\\Pazel.csproj",
         "packagesPath": "C:\\Users\\matin\\.nuget\\packages\\",
-        "outputPath": "D:\\تمرینات\\PazelHosheSerch\\Pazel\\Pazel\\obj\\",
+        "outputPath": "D:\\تمرینات\\hosh\\Pazel\\Pazel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\matin\\AppData\\Roaming\\NuGet\\NuGet.Config",
