@@ -1,6 +1,5 @@
 using Pazel.createPazle;
 using Pazel.movePazleMatrix;
-using System.Text;
 
 namespace Pazel
 {
@@ -124,18 +123,24 @@ namespace Pazel
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BFS bfs = new BFS(Pazle2,Pazle1,buttonsPazel2);
+            BFS bfs = new BFS(Pazle2, Pazle1, buttonsPazel2);
             bfs.SolveBFS();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            UCS ucs = new UCS(Pazle2, Pazle1, buttonsPazel2);
+            ucs.SolveUCS();
         }
     }
 }

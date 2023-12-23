@@ -1,41 +1,58 @@
 ﻿using Pazel.createPazle;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Pazel.movePazleMatrix
 {
-    class BFS : Pazle
+    class UCS :Pazle
     {
         private readonly int[,] initialState;
         private readonly int[,] goalState;
         private readonly List<Button> buttonsPazel;
         private int[] location = new int[2];
-        public BFS(int[,] initialState, int[,] goalState, List<Button> buttonsPazel)
+        public UCS(int[,] initialState, int[,] goalState, List<Button> buttonsPazel)
         {
             this.initialState = initialState;
             this.goalState = goalState;
             this.buttonsPazel = buttonsPazel;
         }
+        
         private bool IsValidMove(int x, int y)
         {
             return x >= 0 && x < 3 && y >= 0 && y < 3;
         }
 
-        private List<Tuple<int, int>> GetNeighbors(int[,] matrix, int x, int y)
+        private List<int[,]> GetNeighbors(int[,] currentState)
         {
-            var neighbors = new List<Tuple<int, int>>();
+            var neighbors = new List<int[,]>();
             int[,] moves = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
 
             for (int i = 0; i < moves.GetLength(0); i++)
             {
-                int newX = x + moves[i, 0];
-                int newY = y + moves[i, 1];
+                int newX = 0, newY = 0;
+                
+                locationZero(currentState, location);
+                int x = location[0], y = location[1];
+
+                newX = x + moves[i, 0];
+                newY = y + moves[i, 1];
+
                 if (IsValidMove(newX, newY))
                 {
-                    neighbors.Add(new Tuple<int, int>(newX, newY));
+                    int[,] newMatrix = (int[,])currentState.Clone();
+                    newMatrix[x, y] = currentState[newX, newY];
+                    newMatrix[newX, newY] = currentState[x, y];
+
+                    neighbors.Add(newMatrix);
                 }
             }
 
             return neighbors;
         }
+
         private string ArrayToString(int[,] arr)
         {
             string result = "";
@@ -49,49 +66,45 @@ namespace Pazel.movePazleMatrix
 
             return result;
         }
-        public void SolveBFS()
+
+        public void SolveUCS()
         {
-            Queue<Tuple<int[,], int, int>> queue = new Queue<Tuple<int[,], int, int>>();
+            // ابتدایی کردن الگوریتم UCS با حالت ابتدایی
+            Queue<Tuple<int[,], int>> queue = new Queue<Tuple<int[,], int>>();
             HashSet<string> visited = new HashSet<string>();
 
-            locationZero(initialState, location);
-            queue.Enqueue(new Tuple<int[,], int, int>(initialState, location[0], location[1]));
+            queue.Enqueue(new Tuple<int[,], int>(initialState, 0));
+            visited.Add(ArrayToString(initialState));
 
             while (queue.Count > 0)
             {
                 var currentStateTuple = queue.Dequeue();
                 int[,] currentState = currentStateTuple.Item1;
-                int x = currentStateTuple.Item2;
-                int y = currentStateTuple.Item3;
+                int cost = currentStateTuple.Item2;
 
                 //frePazleControler(buttonsPazel, currentState);
-                //MessageBox.Show(visited.Count.ToString());
+                //MessageBox.Show("هزینه کل: " + cost);
+                
 
                 if (equalArray(currentState, goalState))
                 {
                     MessageBox.Show("پازل حل شد!");
+                    MessageBox.Show("هزینه کل: " + cost);
                     frePazleControler(buttonsPazel, currentState);
-                    MessageBox.Show("وضعیت های بررسی شده :" + visited.Count.ToString());
                     return;
                 }
 
-                foreach (var neighborTuple in GetNeighbors(currentState, x, y))
+                foreach (var neighbor in GetNeighbors(currentState))
                 {
-                    int newX = neighborTuple.Item1;
-                    int newY = neighborTuple.Item2;
-                    int[,] newState = (int[,])currentState.Clone();
-                    newState[x, y] = currentState[newX, newY];
-                    newState[newX, newY] = currentState[x, y];
-
-                    string newStateString = ArrayToString(newState);
-                    if (!visited.Contains(newStateString))
+                    string neighborString = ArrayToString(neighbor);
+                    if (!visited.Contains(neighborString))
                     {
-                        visited.Add(newStateString);
-                        queue.Enqueue(new Tuple<int[,], int, int>(newState, newX, newY));
+                        visited.Add(neighborString);
+                        queue.Enqueue(new Tuple<int[,], int>(neighbor, cost + 1));
                     }
                 }
-
             }
+
             MessageBox.Show("پازل قابل حل نیست.");
         }
     }

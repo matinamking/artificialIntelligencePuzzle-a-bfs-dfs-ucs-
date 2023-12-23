@@ -71,6 +71,7 @@
             btnUpR = new Button();
             button1 = new Button();
             button2 = new Button();
+            button3 = new Button();
             RandMatrix.SuspendLayout();
             AgentMatrix.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numCount).BeginInit();
@@ -543,12 +544,25 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // button3
+            // 
+            button3.Font = new Font("B Jadid", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.ForeColor = SystemColors.ActiveCaptionText;
+            button3.Location = new Point(456, 571);
+            button3.Name = "button3";
+            button3.Size = new Size(368, 60);
+            button3.TabIndex = 22;
+            button3.Text = "UCS";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(1314, 573);
+            ClientSize = new Size(1314, 660);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(panelRightPazle);
@@ -621,5 +635,6 @@
         private Button btnUpL;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }
