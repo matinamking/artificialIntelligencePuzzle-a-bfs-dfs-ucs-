@@ -1,14 +1,15 @@
 ﻿using Pazel.createPazle;
+using System.Drawing.Drawing2D;
 
 namespace Pazel.movePazleMatrix
 {
-    class DFS : Pazle
+    class AStar : Pazle
     {
         private readonly int[,] initialState;
         private readonly int[,] goalState;
         private readonly List<Button> buttonsPazel;
         private int[] location = new int[2];
-        public DFS(int[,] initialState, int[,] goalState, List<Button> buttonsPazel)
+        public AStar(int[,] initialState, int[,] goalState, List<Button> buttonsPazel)
         {
             this.initialState = initialState;
             this.goalState = goalState;
@@ -22,7 +23,7 @@ namespace Pazel.movePazleMatrix
         private List<Tuple<int, int>> GetNeighbors(int[,] matrix, int x, int y)
         {
             var neighbors = new List<Tuple<int, int>>();
-            int[,] moves = new int[,] { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
+            int[,] moves = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } }; // right, down, left, up
 
             for (int i = 0; i < moves.GetLength(0); i++)
             {
@@ -50,23 +51,58 @@ namespace Pazel.movePazleMatrix
             return result;
         }
 
-        public void SolveDFS()
+        /*private int CalculateHeuristic(int[,] currentState)
         {
-            Stack<Tuple<int[,], int, int>> stack = new Stack<Tuple<int[,], int, int>>();
+            int cost = 0;
+            int[,] goalMatrix = goalState;
+
+            for (int i = 0; i < currentState.GetLength(0); i++)
+            {
+                for (int j = 0; j < currentState.GetLength(1); j++)
+                {
+                    if (currentState[i, j] != goalMatrix[i, j])
+                    {
+                        cost++;
+                    }
+                }
+            }
+
+            return cost;
+        }*/
+
+        private int CalculateHeuristic(int[,] currentState, int[,] goalState)
+        {
+            int misplacedCount = 0;
+            for (int i = 0; i < currentState.GetLength(0); i++)
+            {
+                for (int j = 0; j < currentState.GetLength(1); j++)
+                {
+                    if (currentState[i, j] != goalState[i, j])
+                    {
+                        misplacedCount++;
+                    }
+                }
+            }
+
+            return misplacedCount;
+        }
+
+        public void SolveAStar()
+        {
+            PriorityQueue<Tuple<int[,], int, int>> priorityQueue = new PriorityQueue<Tuple<int[,], int, int>>();
             HashSet<string> visited = new HashSet<string>();
 
+            int startHeuristic = CalculateHeuristic(initialState,goalState);
             locationZero(initialState, location);
-            stack.Push(new Tuple<int[,], int, int>(initialState, location[0], location[1]));
+            priorityQueue.Enqueue(new Tuple<int[,], int, int>(initialState, location[0], location[1]),startHeuristic);
 
-            while (stack.Count > 0)
+            while (priorityQueue.Count > 0)
             {
-                var currentStateTuple = stack.Pop();
+                var currentStateTuple = priorityQueue.Dequeue();
                 int[,] currentState = currentStateTuple.Item1;
                 int x = currentStateTuple.Item2;
                 int y = currentStateTuple.Item3;
 
-                //frePazleControler(buttonsPazel, currentState);
-                //Thread.Sleep(1000);
 
                 if (equalArray(currentState, goalState))
                 {
@@ -85,16 +121,21 @@ namespace Pazel.movePazleMatrix
                     newState[newX, newY] = currentState[x, y];
 
                     string newStateString = ArrayToString(newState);
+                    int newCost = currentStateTuple.Item2 + 1;
+                    int newHeuristic = CalculateHeuristic(newState, goalState);
+                    int priority = newCost + newHeuristic;
+
                     if (!visited.Contains(newStateString))
                     {
                         visited.Add(newStateString);
-                        stack.Push(new Tuple<int[,], int, int>(newState, newX, newY));
+                        //int newHeuristic = CalculateHeuristic(newState);
+                        priorityQueue.Enqueue(new Tuple<int[,], int, int>(newState, newX, newY), priority);
                     }
                 }
             }
 
-            MessageBox.Show("پازل قابل حل نیست.");
+            Console.WriteLine("پازل قابل حل نیست.");
         }
     }
-
 }
+

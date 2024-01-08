@@ -144,5 +144,11 @@ namespace Pazel
             UCS ucs = new UCS(Pazle2, Pazle1, buttonsPazel2);
             ucs.SolveUCS();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AStar aStar = new AStar(Pazle2, Pazle1, buttonsPazel2);
+            aStar.SolveAStar();
+        }
     }
 }

@@ -72,6 +72,7 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            button4 = new Button();
             RandMatrix.SuspendLayout();
             AgentMatrix.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numCount).BeginInit();
@@ -548,7 +549,7 @@
             // 
             button3.Font = new Font("B Jadid", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button3.ForeColor = SystemColors.ActiveCaptionText;
-            button3.Location = new Point(456, 571);
+            button3.Location = new Point(82, 571);
             button3.Name = "button3";
             button3.Size = new Size(368, 60);
             button3.TabIndex = 22;
@@ -556,12 +557,25 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click_1;
             // 
+            // button4
+            // 
+            button4.Font = new Font("B Jadid", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.ForeColor = SystemColors.ActiveCaptionText;
+            button4.Location = new Point(456, 571);
+            button4.Name = "button4";
+            button4.Size = new Size(368, 60);
+            button4.TabIndex = 23;
+            button4.Text = "AStar";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1314, 660);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -636,5 +650,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private Button button4;
     }
 }

@@ -8,7 +8,6 @@ namespace Pazel.movePazleMatrix
         private readonly int[,] goalState;
         private readonly List<Button> buttonsPazel;
         private int[] location = new int[2];
-        //public int Cost = 0;
         public UCS(int[,] initialState, int[,] goalState, List<Button> buttonsPazel)
         {
             this.initialState = initialState;
@@ -23,7 +22,7 @@ namespace Pazel.movePazleMatrix
         private List<Tuple<int, int>> GetNeighbors(int[,] matrix, int x, int y)
         {
             var neighbors = new List<Tuple<int, int>>();
-            int[,] moves = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } }; // right, down, left, up
+            int[,] moves = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
 
             for (int i = 0; i < moves.GetLength(0); i++)
             {
@@ -54,7 +53,6 @@ namespace Pazel.movePazleMatrix
 
         /*private int Cost(int[,] matrix)
         {
-            // یک معیار ساده برای هزینه، تعداد عناصر درست قرار گرفته در جای صحیح است
             int cost = 0;
             int[,] goalMatrix = goalState;
 
@@ -71,12 +69,6 @@ namespace Pazel.movePazleMatrix
 
             return cost;
         }*/
-        /*public int Cost(int[,] currentState)
-        {
-            // اینجا می‌توانید هزینه ثابتی را برای هر گره در نظر بگیرید
-            return 1;
-        }*/
-
         public void SolveUCS()
         {
             PriorityQueue<Tuple<int[,], int, int>> priorityQueue = new PriorityQueue<Tuple<int[,], int, int>>();
@@ -109,7 +101,6 @@ namespace Pazel.movePazleMatrix
                     newState[newX, newY] = currentState[x, y];
 
                     string newStateString = ArrayToString(newState);
-                    //int newCost = currentStateTuple.Item4 + 1;
                     if (!visited.Contains(newStateString))
                     {
                         visited.Add(newStateString);
@@ -121,27 +112,6 @@ namespace Pazel.movePazleMatrix
             MessageBox.Show("پازل قابل حل نیست.");
         }
     }
-    public class PriorityQueue<T>
-    {
-        private readonly List<Tuple<T, int>> elements = new List<Tuple<T, int>>();
-
-        public int Count
-        {
-            get { return elements.Count; }
-        }
-
-        public void Enqueue(T item, int priority)
-        {
-            elements.Add(Tuple.Create(item, priority));
-            elements.Sort((x, y) => x.Item2.CompareTo(y.Item2));
-        }
-
-        public T Dequeue()
-        {
-            elements.Sort((x, y) => x.Item2.CompareTo(y.Item2));
-            T item = elements[0].Item1;
-            elements.RemoveAt(0);
-            return item;
-        }
-    }
+    
 }
+
