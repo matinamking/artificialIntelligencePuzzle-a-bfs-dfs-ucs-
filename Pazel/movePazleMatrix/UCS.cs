@@ -90,6 +90,7 @@ namespace Pazel.movePazleMatrix
                 {
                     MessageBox.Show("پازل حل شد!");
                     MessageBox.Show("هزینه کل: " + cost);
+                    MessageBox.Show("وضعیت های بررسی شده :" + visited.Count.ToString());
                     frePazleControler(buttonsPazel, currentState);
                     return;
                 }

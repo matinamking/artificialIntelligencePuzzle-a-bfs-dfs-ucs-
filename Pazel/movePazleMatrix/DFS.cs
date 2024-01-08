@@ -2,19 +2,20 @@
 
 namespace Pazel.movePazleMatrix
 {
-    class BFS : Pazle
+    class DFS : Pazle
     {
         private readonly int[,] initialState;
         private readonly int[,] goalState;
         private readonly List<Button> buttonsPazel;
         private int[] location = new int[2];
-        public BFS(int[,] initialState, int[,] goalState, List<Button> buttonsPazel)
+
+        public DFS(int[,] initialState, int[,] goalState, List<Button> buttonsPazel)
         {
             this.initialState = initialState;
             this.goalState = goalState;
             this.buttonsPazel = buttonsPazel;
         }
-        private bool IsValidMove(int x, int y)
+        public bool IsValidMove(int x, int y)
         {
             return x >= 0 && x < 3 && y >= 0 && y < 3;
         }
@@ -22,7 +23,7 @@ namespace Pazel.movePazleMatrix
         private List<Tuple<int, int>> GetNeighbors(int[,] matrix, int x, int y)
         {
             var neighbors = new List<Tuple<int, int>>();
-            int[,] moves = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
+            int[,] moves = new int[,] { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
 
             for (int i = 0; i < moves.GetLength(0); i++)
             {
@@ -49,23 +50,24 @@ namespace Pazel.movePazleMatrix
 
             return result;
         }
-        public void SolveBFS()
+
+        public void SolveDFS()
         {
-            Queue<Tuple<int[,], int, int>> queue = new Queue<Tuple<int[,], int, int>>();
+            Stack<Tuple<int[,], int, int>> stack = new Stack<Tuple<int[,], int, int>>();
             HashSet<string> visited = new HashSet<string>();
 
             locationZero(initialState, location);
-            queue.Enqueue(new Tuple<int[,], int, int>(initialState, location[0], location[1]));
+            stack.Push(new Tuple<int[,], int, int>(initialState, location[0], location[1]));
 
-            while (queue.Count > 0)
+            while (stack.Count > 0)
             {
-                var currentStateTuple = queue.Dequeue();
+                var currentStateTuple = stack.Pop();
                 int[,] currentState = currentStateTuple.Item1;
                 int x = currentStateTuple.Item2;
                 int y = currentStateTuple.Item3;
 
                 //frePazleControler(buttonsPazel, currentState);
-                //MessageBox.Show(visited.Count.ToString());
+                //Thread.Sleep(1000); // تاخیر 1 ثانیه
 
                 if (equalArray(currentState, goalState))
                 {
@@ -87,12 +89,13 @@ namespace Pazel.movePazleMatrix
                     if (!visited.Contains(newStateString))
                     {
                         visited.Add(newStateString);
-                        queue.Enqueue(new Tuple<int[,], int, int>(newState, newX, newY));
+                        stack.Push(new Tuple<int[,], int, int>(newState, newX, newY));
                     }
                 }
-
             }
+
             MessageBox.Show("پازل قابل حل نیست.");
         }
     }
+
 }

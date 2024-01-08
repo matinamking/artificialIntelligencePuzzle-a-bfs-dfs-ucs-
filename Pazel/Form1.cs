@@ -129,7 +129,9 @@ namespace Pazel
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            HashSet<string> visited = new HashSet<string>();
+            DFS dfs = new DFS(Pazle2, Pazle1, buttonsPazel2);
+            dfs.SolveDFS();
         }
 
         private void button3_Click(object sender, EventArgs e)
