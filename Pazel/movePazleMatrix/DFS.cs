@@ -15,7 +15,7 @@ namespace Pazel.movePazleMatrix
             this.goalState = goalState;
             this.buttonsPazel = buttonsPazel;
         }
-        public bool IsValidMove(int x, int y)
+        private bool IsValidMove(int x, int y)
         {
             return x >= 0 && x < 3 && y >= 0 && y < 3;
         }
