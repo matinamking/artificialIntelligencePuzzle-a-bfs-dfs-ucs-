@@ -1,0 +1,14 @@
+D:\تمرینات\test\MasirB\MasirB\obj\Debug\net6.0\MasirB.GeneratedMSBuildEditorConfig.editorconfig
+D:\تمرینات\test\MasirB\MasirB\obj\Debug\net6.0\MasirB.AssemblyInfoInputs.cache
+D:\تمرینات\test\MasirB\MasirB\obj\Debug\net6.0\MasirB.AssemblyInfo.cs
+D:\تمرینات\test\MasirB\MasirB\obj\Debug\net6.0\MasirB.csproj.CoreCompileInputs.cache
+D:\تمرینات\test\MasirB\MasirB\bin\Debug\net6.0\MasirB.exe
+D:\تمرینات\test\MasirB\MasirB\bin\Debug\net6.0\MasirB.deps.json
+D:\تمرینات\test\MasirB\MasirB\bin\Debug\net6.0\MasirB.runtimeconfig.json
+D:\تمرینات\test\MasirB\MasirB\bin\Debug\net6.0\MasirB.dll
+D:\تمرینات\test\MasirB\MasirB\bin\Debug\net6.0\MasirB.pdb
+D:\تمرینات\test\MasirB\MasirB\obj\Debug\net6.0\MasirB.dll
+D:\تمرینات\test\MasirB\MasirB\obj\Debug\net6.0\refint\MasirB.dll
+D:\تمرینات\test\MasirB\MasirB\obj\Debug\net6.0\MasirB.pdb
+D:\تمرینات\test\MasirB\MasirB\obj\Debug\net6.0\MasirB.genruntimeconfig.cache
+D:\تمرینات\test\MasirB\MasirB\obj\Debug\net6.0\ref\MasirB.dll

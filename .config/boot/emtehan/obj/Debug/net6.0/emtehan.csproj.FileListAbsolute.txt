@@ -1,0 +1,14 @@
+D:\تمرینات\test\emtehan\emtehan\bin\Debug\net6.0\emtehan.exe
+D:\تمرینات\test\emtehan\emtehan\bin\Debug\net6.0\emtehan.deps.json
+D:\تمرینات\test\emtehan\emtehan\bin\Debug\net6.0\emtehan.runtimeconfig.json
+D:\تمرینات\test\emtehan\emtehan\bin\Debug\net6.0\emtehan.dll
+D:\تمرینات\test\emtehan\emtehan\bin\Debug\net6.0\emtehan.pdb
+D:\تمرینات\test\emtehan\emtehan\obj\Debug\net6.0\emtehan.GeneratedMSBuildEditorConfig.editorconfig
+D:\تمرینات\test\emtehan\emtehan\obj\Debug\net6.0\emtehan.AssemblyInfoInputs.cache
+D:\تمرینات\test\emtehan\emtehan\obj\Debug\net6.0\emtehan.AssemblyInfo.cs
+D:\تمرینات\test\emtehan\emtehan\obj\Debug\net6.0\emtehan.csproj.CoreCompileInputs.cache
+D:\تمرینات\test\emtehan\emtehan\obj\Debug\net6.0\emtehan.dll
+D:\تمرینات\test\emtehan\emtehan\obj\Debug\net6.0\refint\emtehan.dll
+D:\تمرینات\test\emtehan\emtehan\obj\Debug\net6.0\emtehan.pdb
+D:\تمرینات\test\emtehan\emtehan\obj\Debug\net6.0\emtehan.genruntimeconfig.cache
+D:\تمرینات\test\emtehan\emtehan\obj\Debug\net6.0\ref\emtehan.dll
